@@ -6,7 +6,10 @@ const attachmentFileBlob = DriveApp.getFileById('1ObS1pgmhIcqnIxvqjdVvsa4MKNp0D2
 function bulkSendMail() {
   const contactDataObjs = loadContactsFromSheet();
   for (const contactData of contactDataObjs) {
-    sendMail(contactData);
+    // メールアドレスが設定されている場合のみメールを送る
+    if (contactData['電子メール']) {
+      sendMail(contactData);
+    }
   }
 }
 

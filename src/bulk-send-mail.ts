@@ -43,7 +43,7 @@ function loadContactsFromSheet(): { [key: string]: any }[] {
 function sendMail(contactObj: { [key: string]: any }) {
   const subject = '謹賀新年'; // 件名
   const headerGreetLine = [contactObj['会社名'], contactObj['名前'], '様'].join(' ');
-  const body = [headerGreetLine, 'あけましておめでとうございます', '昨年は大変お世話になりました','今年もよろしくお願いします'].join('\n'); // メールの本文
+  const body = [headerGreetLine, 'あけましておめでとうございます', '昨年は大変お世話になりました', '今年もよろしくお願いします'].join('\n'); // メールの本文
   // const options = {}; // ファイル添付などを行わない場合
 
   // ファイル添付を行う

@@ -36,8 +36,13 @@ function loadContactsFromSheet(): { [key: string]: any }[] {
 function sendMail(contactObj: { [key: string]: any }) {
   const subject = '~~件名~~';
   const attachmentFileBlob = DriveApp.getFileById('1ObS1pgmhIcqnIxvqjdVvsa4MKNp0D2OF').getBlob();
+  // HTMLのインラインの中に画像を埋め込む
+  const inlineImageText = 'インライン画像メールです。<img src="cid:inlineImg"><br><strong>画像要確認<strong>';
   const options = {
-    attachments: attachmentFileBlob,
+    htmlBody: inlineImageText,
+    inlineImages: {
+      inlineImg: attachmentFileBlob,
+    },
   };
 
   const headerGreetLine = [contactObj['会社名'], contactObj['名前'], '様'].join(' ');

@@ -1,5 +1,8 @@
 const contactSheerUrl = 'https://docs.google.com/spreadsheets/d/15u-Un6DA-2BT7gqdt7Aox-893B5PhciRMQBAn6ivWjs/edit';
 
+// ファイルの読み込みはあらかじめ行なっておく
+const attachmentFileBlob = DriveApp.getFileById('1ObS1pgmhIcqnIxvqjdVvsa4MKNp0D2OF').getBlob();
+
 function bulkSendMail() {
   const contactDataObjs = loadContactsFromSheet();
   for (const contactData of contactDataObjs) {
@@ -44,7 +47,6 @@ function sendMail(contactObj: { [key: string]: any }) {
   // const options = {}; // ファイル添付などを行わない場合
 
   // ファイル添付を行う
-  const attachmentFileBlob = DriveApp.getFileById('1ObS1pgmhIcqnIxvqjdVvsa4MKNp0D2OF').getBlob();
   const options = { attachments: attachmentFileBlob }; // ファイルを添付する
 
   // HTMLメールで本文に画像を挿入する場合

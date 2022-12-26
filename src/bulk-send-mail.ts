@@ -35,7 +35,10 @@ function loadContactsFromSheet(): { [key: string]: any }[] {
 
 function sendMail(contactObj: { [key: string]: any }) {
   const subject = '~~件名~~';
-  const options = {};
+  const attachmentFileBlob = DriveApp.getFileById('1ObS1pgmhIcqnIxvqjdVvsa4MKNp0D2OF').getBlob();
+  const options = {
+    attachments: attachmentFileBlob,
+  };
 
   const headerGreetLine = [contactObj['会社名'], contactObj['名前'], '様'].join(' ');
   const body = [headerGreetLine, 'メール本文'].join('\n');
